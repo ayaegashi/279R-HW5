@@ -19,3 +19,17 @@ I also looked into SQLAlchemy by referencing https://www.sqlalchemy.org/ and htt
 
 ## How to Open my To-Do List App
 
+Using the green Code button, clone or download the code from this repository. From your command line, access the code's folder.
+
+Install Flask and Flask-SQLAlchemy, which are used by the app, by running the following commands:
+
+```bash
+$ pip install Flask
+$ pip install Flask-SQLAlchemy
+```
+
+To open the app, run:
+
+```bash
+$ python app.py
+```
