@@ -4,48 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>Ayana's Todo App</title>
 
+    <!-- Connect to Semantic UI style sheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
 
 <body>
     <div style="margin-top: 50px;" class="ui container">
+        <!-- Create title for To Do App -->
         <h1 class="ui center aligned header">To Do App</h1>
 
+        <!-- Create "form", which will allow users to input a new todo item -->
+        <!-- When submitted, the form triggers the "add" function defined in app.py -->
         <form class="ui form" action="/add" method="post">
             <div class="field">
+                <!-- Display label above the input box -->
                 <label>Todo Title</label>
+                <!-- Create input field for user -->
                 <input type="text" name="title" placeholder="Enter Todo..."><br>
             </div>
+            <!-- Create button for user to submit the form -->
+            <!-- User can also press the Enter key for the same effect -->
             <button class="ui blue button" type="submit">Add</button>
         </form>
 
         <hr>
 
+        <!-- Display all the todo list items -->
+        <!-- todo_list is a variable queried from the database and passed in to the template from home() -->
+        <!-- This syntax uses the Jinja template engine, allowing us to access the todo_list argument -->
         {% for todo in todo_list %}
         <div class="ui segment">
             <p class="ui big header">
+                <!-- Jinja allows us to access attributes of an object -->
                 {{todo.id }} | 
+                <!-- Using Jinja we can also use control flows like if and while -->
+                <!-- If the todo item is completed, we add <del> tags, which strike-through the text -->
                 {% if todo.complete == True %}
                 <del>
                 {% endif %}
+                <!-- Display the todo item's title -->
                 {{ todo.title }}
+                <!-- Add the end-tag for the strike-through effect -->
                 {% if todo.complete == True %}
                 </del>
                 {% endif %}
             </p>
 
+            <!-- Create button that when clicked toggles the todo item's completion status -->
+            <!-- When clicked, will route to /update and call the update() function -->
+            <!-- We also pass the todo item's id so that the item can be found in the database -->
             <a href="/update/{{ todo.id }}">
+                <!-- If the todo item is not completed, display button in gray -->
                 {% if todo.complete == False %}
                 <span class="ui gray button">Not Complete</span>
                 {% else %}
+                <!-- If the todo item is complete, display button in green -->
                 <span class="ui green button">Completed</span>
                 {% endif %}
             </a>
+            <!-- Create red delete button -->
+            <!-- When clicked, the app is routed to /delete which calls the delete() function -->
+            <!-- The todo item's id is also passed to find the element in the database -->
             <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
         </div>
+        <!-- End the for loop -->
         {% endfor %}
     </div>
 </body>
