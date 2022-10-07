@@ -14,7 +14,7 @@ This to-do list app was created by following this online tutorial: https://www.p
 
 In order to create the strike-through effect for completed tasks, I also referenced this answer on StackOverflow: https://stackoverflow.com/questions/67327845/flask-python-add-strikethrough-styling-to-todo-list-item-in-flask-app
 
-I also looked into SQLAlchemy by referencing https://www.sqlalchemy.org/
+I also looked into SQLAlchemy by referencing https://www.sqlalchemy.org/ and https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
 
 
 ## How to Open my To-Do List App
