@@ -33,3 +33,5 @@ To open the app, run:
 ```bash
 $ python app.py
 ```
+
+(Note that you can do the same using pip3 and python3.)
